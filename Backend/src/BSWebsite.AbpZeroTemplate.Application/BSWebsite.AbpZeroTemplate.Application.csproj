@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net461;netcoreapp2.1</TargetFrameworks>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <RootNamespace>BSWebsite.AbpZeroTemplate.Web.Core</RootNamespace>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BukStore.AbpZeroTemplate.Application.Shared\BukStore.AbpZeroTemplate.Application.Shared.csproj" />
+    <ProjectReference Include="..\BukStore.AbpZeroTemplate.Core\BukStore.AbpZeroTemplate.Core.csproj" />
+    <ProjectReference Include="..\BSWebsite.AbpZeroTemplate.Application.Share\BSWebsite.AbpZeroTemplate.Application.Share.csproj" />
+    <ProjectReference Include="..\BSWebsite.AbpZeroTemplate.Core\BSWebsite.AbpZeroTemplate.Core.csproj" />
+  </ItemGroup>
+
+</Project>
