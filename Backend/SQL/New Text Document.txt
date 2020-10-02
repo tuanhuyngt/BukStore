@@ -1,0 +1,14 @@
+CREATE TABLE [dbo].[Customer](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Customer_Id]  AS ('CS'+right('00000000'+CONVERT([varchar](8),[Id]),(8))) PERSISTED,
+	[Customer_Name] [nvarchar](60) NOT NULL,
+	[Customer_Birth] [date] NULL,
+	[Customer_Gender] [nvarchar](10) NULL,
+	[Customer_Phone] [varchar](15) NULL,
+	[Customer_Email] [varchar](50) NULL,
+	[Customer_Point] [int] NULL,
+	[Customer_Creator] [nvarchar](50) NULL,
+	[Customer_Creation_Date] [date] NULL,
+	[Customer_IsDeleted] [int] NULL
+) ON [PRIMARY]
+GO

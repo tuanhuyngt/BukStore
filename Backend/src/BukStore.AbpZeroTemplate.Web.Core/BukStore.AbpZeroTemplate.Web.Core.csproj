@@ -18,6 +18,7 @@
     <ProjectReference Include="..\BukStore.AbpZeroTemplate.EntityFrameworkCore\BukStore.AbpZeroTemplate.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\BSWebsite.AbpZeroTemplate.Web.Core\BSWebsite.AbpZeroTemplate.Web.Core.csproj" />
     <ProjectReference Include="..\modules\author\Author.AbpZeroTemplate.Web.Core\Author.AbpZeroTemplate.Web.Core.csproj" />
+    <ProjectReference Include="..\modules\customer\Customer.AbpZeroTemplate.Web.Core\Customer.AbpZeroTemplate.Web.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

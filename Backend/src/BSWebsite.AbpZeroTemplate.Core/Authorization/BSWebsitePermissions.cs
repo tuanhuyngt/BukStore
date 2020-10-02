@@ -14,13 +14,5 @@
         public const string Pages_Administration_MenuClient_Edit = "Pages.Administration.MenuClient.Edit";
         public const string Pages_Administration_MenuClient_Delete = "Pages.Administration.MenuClient.Delete";
 
-        public const string Pages_Administration_DemoModel = "Pages.Administration.DemoModel";
-        public const string Pages_Administration_DemoModel_Create = "Pages.Administration.DemoModel.Create";
-        public const string Pages_Administration_DemoModel_Edit = "Pages.Administration.DemoModel.Edit";
-        public const string Pages_Administration_DemoModel_Delete = "Pages.Administration.DemoModel.Delete";
-
-        public const string Pages_Administration_Xe = "Pages.Administration.Xe";
-
-
     }
 }

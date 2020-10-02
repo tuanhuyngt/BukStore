@@ -30,7 +30,8 @@
     <ProjectReference Include="..\BukStore.AbpZeroTemplate.Core\BukStore.AbpZeroTemplate.Core.csproj" />
     <ProjectReference Include="..\BukStore.AbpZeroTemplate.EntityFrameworkCore\BukStore.AbpZeroTemplate.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\BSWebsite.AbpZeroTemplate.Application\BSWebsite.AbpZeroTemplate.Application.csproj" />
-    <ProjectReference Include="..\modules\author\Author.AbpZeroTemplate.Application\Author.AbpZeroTemplate.Application.csproj" />  
+    <ProjectReference Include="..\modules\author\Author.AbpZeroTemplate.Application\Author.AbpZeroTemplate.Application.csproj" />
+    <ProjectReference Include="..\modules\customer\Customer.AbpZeroTemplate.Application\Customer.AbpZeroTemplate.Application.csproj" />  
   </ItemGroup>
 
   <ItemGroup>

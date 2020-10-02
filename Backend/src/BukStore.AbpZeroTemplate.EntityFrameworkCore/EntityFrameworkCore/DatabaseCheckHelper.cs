@@ -39,6 +39,7 @@ namespace BukStore.AbpZeroTemplate.EntityFrameworkCore
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message.ToString());
                 return false;
             }
 

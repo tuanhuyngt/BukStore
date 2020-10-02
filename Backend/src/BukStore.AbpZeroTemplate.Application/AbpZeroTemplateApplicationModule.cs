@@ -4,6 +4,7 @@ using Abp.Reflection.Extensions;
 using BukStore.AbpZeroTemplate.Authorization;
 using BSWebsite.AbpZeroTemplate.Application;
 using Author.AbpZeroTemplate.Application;
+using Customer.AbpZeroTemplate.Application;
 
 namespace BukStore.AbpZeroTemplate
 {
@@ -13,7 +14,8 @@ namespace BukStore.AbpZeroTemplate
     [DependsOn(
         typeof(AbpZeroTemplateCoreModule),
         typeof(BSWebsiteApplicationModule),
-        typeof(AuthorApplicationModule)
+        typeof(AuthorApplicationModule),
+        typeof(CustomerApplicationModule)
         )]
     public class AbpZeroTemplateApplicationModule : AbpModule
     {

@@ -36,12 +36,6 @@ namespace BSWebsite.AbpZeroTemplate.Core.Authorization
             menuClients.CreateChildPermission(BSWebsitePermissions.Pages_Administration_MenuClient_Edit, L("EditingMenuClient"));
             menuClients.CreateChildPermission(BSWebsitePermissions.Pages_Administration_MenuClient_Delete, L("DeletingMenuClient"));
 
-            var demoModels = gwebsite.CreateChildPermission(BSWebsitePermissions.Pages_Administration_DemoModel, L("DemoModel"));
-            demoModels.CreateChildPermission(BSWebsitePermissions.Pages_Administration_DemoModel_Create, L("CreatingNewDemoModel"));
-            demoModels.CreateChildPermission(BSWebsitePermissions.Pages_Administration_DemoModel_Edit, L("EditingDemoModel"));
-            demoModels.CreateChildPermission(BSWebsitePermissions.Pages_Administration_DemoModel_Delete, L("DeletingDemoModel"));
-            
-            var xe = gwebsite.CreateChildPermission(BSWebsitePermissions.Pages_Administration_Xe, L("Xe"));
         }
 
         private static ILocalizableString L(string name)

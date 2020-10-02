@@ -27,6 +27,7 @@ using BukStore.AbpZeroTemplate.Web.Chat.SignalR;
 using BukStore.AbpZeroTemplate.Web.Configuration;
 using BSWebsite.AbpZeroTemplate.Web.Core;
 using Author.AbpZeroTemplate.Web.Core;
+using Customer.AbpZeroTemplate.Web.Core;
 
 namespace BukStore.AbpZeroTemplate.Web
 {
@@ -38,6 +39,7 @@ namespace BukStore.AbpZeroTemplate.Web
         typeof(AbpRedisCacheModule), //AbpRedisCacheModule dependency (and Abp.RedisCache nuget package) can be removed if not using Redis cache
         typeof(AbpHangfireAspNetCoreModule), //AbpHangfireModule dependency (and Abp.Hangfire.AspNetCore nuget package) can be removed if not using Hangfire
         typeof(AuthorWebCoreModule),
+        typeof(CustomerWebCoreModule),
         typeof(BSWebsiteWebCoreModule)
     )]
     public class AbpZeroTemplateWebCoreModule : AbpModule
