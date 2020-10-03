@@ -18,6 +18,7 @@ import { ModulesRoutingModule } from "./modules-routing.module";
 import { ModulesServiceProxyModule } from "./modules.service-proxy.module";
 import { RouterModule } from "@angular/router";
 import { AuthorsModule } from './authors/authors.module';
+import { CustomersModule } from "./customers/customers.module";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AuthorsModule } from './authors/authors.module';
         ModulesRoutingModule,
         ModulesServiceProxyModule,
         RouterModule,
-        AuthorsModule,       
+        AuthorsModule,
+        CustomersModule       
     ],
     declarations: [
     ],

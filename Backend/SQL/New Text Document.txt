@@ -12,3 +12,36 @@ CREATE TABLE [dbo].[Customer](
 	[Customer_IsDeleted] [int] NULL
 ) ON [PRIMARY]
 GO
+
+CREATE OR ALTER PROC CUSTOMER_Search 
+@Id int = NULL,
+@Customer_Id varchar(10) = NULL,
+@Customer_Name nvarchar(60) = null,
+@Customer_Birth date = null,
+@Customer_Gender nvarchar(10) = null,
+@Customer_Phone varchar(15) = null,
+@Customer_Email varchar(50) = null,
+@Customer_Point int = null,
+@Customer_CreationDay date = null,
+@Customer_Creator nvarchar(50) = null,
+@Customer_IsDeleted int = null
+
+as
+begin
+	select cs.Id, cs.Customer_Id, cs.Customer_Name, cs.Customer_Birth, cs.Customer_Gender, cs.Customer_Phone,cs.Customer_Email,cs.Customer_Point,cs.Customer_Creator,cs.Customer_Creation_Date,cs.Customer_IsDeleted
+	from Customer cs
+	where
+	(@Id is null or @Id = '' or @Id = cs.Id) and
+	(@Customer_Id is null or @Customer_Id = '' or cs.Customer_Id like '%' + @Customer_Id + '%') and
+	(@Customer_Name is null or @Customer_Name = '' or cs.Customer_Name like '%' + @Customer_Name + '%') and
+	(@Customer_Birth is null or @Customer_Birth = cs.Customer_Birth) and
+	(@Customer_Gender is null or @Customer_Gender = cs.Customer_Gender) and
+	(@Customer_Phone is null or cs.Customer_Phone like '%' + @Customer_Phone + '%') and
+	(@Customer_Email is null or cs.Customer_Email like '%' + @Customer_Email + '%') and
+	(@Customer_Point is null or @Customer_Point = cs.Customer_Point) and
+	(@Customer_CreationDay is null or @Customer_CreationDay = cs.Customer_Creation_Date) and
+	(@Customer_Creator is null or @Customer_Creator = cs.Customer_Creator) and
+	(@Customer_IsDeleted is null or @Customer_IsDeleted = cs.Customer_IsDeleted)
+end
+go
+

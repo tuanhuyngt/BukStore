@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Abp.Runtime.Validation;
+using BukStore.AbpZeroTemplate.Dto;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Customer.AbpZeroTemplate.Application.Share.Customer.Dto
@@ -16,5 +18,6 @@ namespace Customer.AbpZeroTemplate.Application.Share.Customer.Dto
         public string Customer_Creator { get; set; }
         public DateTime? Customer_Creation_Date { get; set; }
         public int? Customer_IsDeleted { get; set; }
+
     }
 }

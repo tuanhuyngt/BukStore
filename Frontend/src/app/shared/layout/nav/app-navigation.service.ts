@@ -26,13 +26,12 @@ export class AppNavigationService {
                 'Pages.Administration.Host.Dashboard',
                 'flaticon-line-graph',
                 '/app/admin/hostDashboard'
-            ),
-
+            ),         
             new AppMenuItem(
-                "Tác giả",
+                "Khách hàng",
                 "Pages.Author.Author",
-                "flaticon-transport",
-                "/app/admin/author-management"
+                "flaticon-car",
+                "/app/admin/customer-management"
             ),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),

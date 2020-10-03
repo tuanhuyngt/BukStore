@@ -1732,6 +1732,201 @@ export class CommonLookupServiceProxy {
 }
 
 @Injectable()
+export class CustomerServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    cUSTOMER_Insert(input: CustomerInsertDto | null | undefined): Observable<{ [key: string] : any; }> {
+        let url_ = this.baseUrl + "/api/Customer/CUSTOMER_Insert";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCUSTOMER_Insert(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCUSTOMER_Insert(<any>response_);
+                } catch (e) {
+                    return <Observable<{ [key: string] : any; }>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<{ [key: string] : any; }>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCUSTOMER_Insert(response: HttpResponseBase): Observable<{ [key: string] : any; }> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (resultData200) {
+                result200 = {};
+                for (let key in resultData200) {
+                    if (resultData200.hasOwnProperty(key))
+                        result200[key] = resultData200[key];
+                }
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<{ [key: string] : any; }>(<any>null);
+    }
+
+    /**
+     * @ma (optional) 
+     * @return Success
+     */
+    cUSTOMER_Del(ma: number | null | undefined): Observable<{ [key: string] : any; }> {
+        let url_ = this.baseUrl + "/api/Customer/CUSTOMER_Del?";
+        if (ma !== undefined)
+            url_ += "Ma=" + encodeURIComponent("" + ma) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCUSTOMER_Del(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCUSTOMER_Del(<any>response_);
+                } catch (e) {
+                    return <Observable<{ [key: string] : any; }>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<{ [key: string] : any; }>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCUSTOMER_Del(response: HttpResponseBase): Observable<{ [key: string] : any; }> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (resultData200) {
+                result200 = {};
+                for (let key in resultData200) {
+                    if (resultData200.hasOwnProperty(key))
+                        result200[key] = resultData200[key];
+                }
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<{ [key: string] : any; }>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    cUSTOMER_Search(input: CustomerSearchDto | null | undefined): Observable<CustomerSearchDto[]> {
+        let url_ = this.baseUrl + "/api/Customer/CUSTOMER_Search";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCUSTOMER_Search(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCUSTOMER_Search(<any>response_);
+                } catch (e) {
+                    return <Observable<CustomerSearchDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<CustomerSearchDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCUSTOMER_Search(response: HttpResponseBase): Observable<CustomerSearchDto[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (resultData200 && resultData200.constructor === Array) {
+                result200 = [];
+                for (let item of resultData200)
+                    result200.push(CustomerSearchDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<CustomerSearchDto[]>(<any>null);
+    }
+}
+
+@Injectable()
 export class DemoModelServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -10521,9 +10716,9 @@ export interface IAuthorInsertDto {
 
 export class AuthorSearchDto implements IAuthorSearchDto {
     id!: number | undefined;
-    author_Name!: string;
+    author_Name!: string | undefined;
     author_Gender!: string | undefined;
-    author_Birth!: moment.Moment | undefined;
+    author_Birth!: number | undefined;
     author_Des!: string | undefined;
 
     constructor(data?: IAuthorSearchDto) {
@@ -10540,7 +10735,7 @@ export class AuthorSearchDto implements IAuthorSearchDto {
             this.id = data["id"];
             this.author_Name = data["author_Name"];
             this.author_Gender = data["author_Gender"];
-            this.author_Birth = data["author_Birth"] ? moment(data["author_Birth"].toString()) : <any>undefined;
+            this.author_Birth = data["author_Birth"];
             this.author_Des = data["author_Des"];
         }
     }
@@ -10557,7 +10752,7 @@ export class AuthorSearchDto implements IAuthorSearchDto {
         data["id"] = this.id;
         data["author_Name"] = this.author_Name;
         data["author_Gender"] = this.author_Gender;
-        data["author_Birth"] = this.author_Birth ? this.author_Birth.toISOString() : <any>undefined;
+        data["author_Birth"] = this.author_Birth;
         data["author_Des"] = this.author_Des;
         return data; 
     }
@@ -10565,9 +10760,9 @@ export class AuthorSearchDto implements IAuthorSearchDto {
 
 export interface IAuthorSearchDto {
     id: number | undefined;
-    author_Name: string;
+    author_Name: string | undefined;
     author_Gender: string | undefined;
-    author_Birth: moment.Moment | undefined;
+    author_Birth: number | undefined;
     author_Des: string | undefined;
 }
 
@@ -11181,6 +11376,158 @@ export class GetDefaultEditionNameOutput implements IGetDefaultEditionNameOutput
 
 export interface IGetDefaultEditionNameOutput {
     name: string | undefined;
+}
+
+export class CustomerInsertDto implements ICustomerInsertDto {
+    id!: number | undefined;
+    customer_Id!: string | undefined;
+    customer_Name!: string | undefined;
+    customer_Birth!: moment.Moment | undefined;
+    customer_Gender!: string | undefined;
+    customer_Phone!: string | undefined;
+    customer_Email!: string | undefined;
+    customer_Point!: number | undefined;
+    customer_Creator!: string | undefined;
+    customer_Creation_Date!: moment.Moment | undefined;
+    customer_IsDeleted!: number | undefined;
+
+    constructor(data?: ICustomerInsertDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.id = data["id"];
+            this.customer_Id = data["customer_Id"];
+            this.customer_Name = data["customer_Name"];
+            this.customer_Birth = data["customer_Birth"] ? moment(data["customer_Birth"].toString()) : <any>undefined;
+            this.customer_Gender = data["customer_Gender"];
+            this.customer_Phone = data["customer_Phone"];
+            this.customer_Email = data["customer_Email"];
+            this.customer_Point = data["customer_Point"];
+            this.customer_Creator = data["customer_Creator"];
+            this.customer_Creation_Date = data["customer_Creation_Date"] ? moment(data["customer_Creation_Date"].toString()) : <any>undefined;
+            this.customer_IsDeleted = data["customer_IsDeleted"];
+        }
+    }
+
+    static fromJS(data: any): CustomerInsertDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new CustomerInsertDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["customer_Id"] = this.customer_Id;
+        data["customer_Name"] = this.customer_Name;
+        data["customer_Birth"] = this.customer_Birth ? this.customer_Birth.toISOString() : <any>undefined;
+        data["customer_Gender"] = this.customer_Gender;
+        data["customer_Phone"] = this.customer_Phone;
+        data["customer_Email"] = this.customer_Email;
+        data["customer_Point"] = this.customer_Point;
+        data["customer_Creator"] = this.customer_Creator;
+        data["customer_Creation_Date"] = this.customer_Creation_Date ? this.customer_Creation_Date.toISOString() : <any>undefined;
+        data["customer_IsDeleted"] = this.customer_IsDeleted;
+        return data; 
+    }
+}
+
+export interface ICustomerInsertDto {
+    id: number | undefined;
+    customer_Id: string | undefined;
+    customer_Name: string | undefined;
+    customer_Birth: moment.Moment | undefined;
+    customer_Gender: string | undefined;
+    customer_Phone: string | undefined;
+    customer_Email: string | undefined;
+    customer_Point: number | undefined;
+    customer_Creator: string | undefined;
+    customer_Creation_Date: moment.Moment | undefined;
+    customer_IsDeleted: number | undefined;
+}
+
+export class CustomerSearchDto implements ICustomerSearchDto {
+    id!: number | undefined;
+    customer_Id!: string | undefined;
+    customer_Name!: string | undefined;
+    customer_Birth!: moment.Moment | undefined;
+    customer_Gender!: string | undefined;
+    customer_Phone!: string | undefined;
+    customer_Email!: string | undefined;
+    customer_Point!: number | undefined;
+    customer_Creator!: string | undefined;
+    customer_Creation_Date!: moment.Moment | undefined;
+    customer_IsDeleted!: number | undefined;
+
+    constructor(data?: ICustomerSearchDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.id = data["id"];
+            this.customer_Id = data["customer_Id"];
+            this.customer_Name = data["customer_Name"];
+            this.customer_Birth = data["customer_Birth"] ? moment(data["customer_Birth"].toString()) : <any>undefined;
+            this.customer_Gender = data["customer_Gender"];
+            this.customer_Phone = data["customer_Phone"];
+            this.customer_Email = data["customer_Email"];
+            this.customer_Point = data["customer_Point"];
+            this.customer_Creator = data["customer_Creator"];
+            this.customer_Creation_Date = data["customer_Creation_Date"] ? moment(data["customer_Creation_Date"].toString()) : <any>undefined;
+            this.customer_IsDeleted = data["customer_IsDeleted"];
+        }
+    }
+
+    static fromJS(data: any): CustomerSearchDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new CustomerSearchDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["customer_Id"] = this.customer_Id;
+        data["customer_Name"] = this.customer_Name;
+        data["customer_Birth"] = this.customer_Birth ? this.customer_Birth.toISOString() : <any>undefined;
+        data["customer_Gender"] = this.customer_Gender;
+        data["customer_Phone"] = this.customer_Phone;
+        data["customer_Email"] = this.customer_Email;
+        data["customer_Point"] = this.customer_Point;
+        data["customer_Creator"] = this.customer_Creator;
+        data["customer_Creation_Date"] = this.customer_Creation_Date ? this.customer_Creation_Date.toISOString() : <any>undefined;
+        data["customer_IsDeleted"] = this.customer_IsDeleted;
+        return data; 
+    }
+}
+
+export interface ICustomerSearchDto {
+    id: number | undefined;
+    customer_Id: string | undefined;
+    customer_Name: string | undefined;
+    customer_Birth: moment.Moment | undefined;
+    customer_Gender: string | undefined;
+    customer_Phone: string | undefined;
+    customer_Email: string | undefined;
+    customer_Point: number | undefined;
+    customer_Creator: string | undefined;
+    customer_Creation_Date: moment.Moment | undefined;
+    customer_IsDeleted: number | undefined;
 }
 
 export class PagedResultDtoOfDemoModelDto implements IPagedResultDtoOfDemoModelDto {
