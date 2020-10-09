@@ -19,7 +19,7 @@ namespace BukStore.AbpZeroTemplate.Helpers
         private readonly string connectionString;
         public ProcedureHelper()
         {
-            connectionString = "Data Source=DESKTOP-NJVMT55\\SQLEXPRESS;Initial Catalog=DbPratice;Integrated Security=True";
+            connectionString = "Data Source=35.240.139.201;Initial Catalog=DbPratice;User ID=tuanhuyngt;Password=tuanhuy1231;";
         }
 
         private List<ProcedureParamInfo> GetParamInfos(IDbConnection conn, string procedureName)

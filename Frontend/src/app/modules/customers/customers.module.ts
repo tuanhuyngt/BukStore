@@ -1,3 +1,4 @@
+import { CustomerAddComponent } from './customer-add/customer-add.component';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -24,6 +25,6 @@ import { UtilsModule } from '@shared/utils/utils.module';
     PaginatorModule,
     UtilsModule
   ],
-  declarations: [CustomerManagementComponent]
+  declarations: [CustomerManagementComponent, CustomerAddComponent]
 })
 export class CustomersModule { }

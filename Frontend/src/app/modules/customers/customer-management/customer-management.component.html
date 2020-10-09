@@ -12,7 +12,7 @@
             <div class="col-xs-6 text-right">
                 <button (click)="exportToExcel()" class="btn btn-outline-success"><i class="fa fa-file-excel-o"></i>
                     {{l("ExportToExcel")}}</button>
-                <button (click)="createUser()" *ngIf="isGranted('Pages.Administration.Users.Create')"
+                <button routerLink="/app/admin/customer-add" *ngIf="isGranted('Pages.Administration.Users.Create')"
                     class="btn btn-primary"><i class="fa fa-plus"></i> {{l("CreateNewUser")}}</button>
             </div>
         </div>
